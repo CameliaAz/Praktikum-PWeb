@@ -6,7 +6,7 @@
 
 # LAPORAN PRAKTIKUM PEMOGRAMAN WEB SEMESTER 3
 
-# JOBSHEET 9
+# JOBSHEET 9 - CRUD, Pagination dan Search Realtime
 
 ## 1. Tujuan Praktikum
 * Melengkapi fitur aplikasi dengan dua operasi terakhir dari siklus CRUD, yaitu **Update (Ubah)** dan **Delete (Hapus)**.
@@ -147,5 +147,45 @@ Berdasarkan praktikum yang telah dilakukan pada Jobsheet 9, dapat disimpulkan ba
 
 **Peningkatan Pengalaman Pengguna & Keamanan:** Integrasi antarmuka melalui penyesuaian gaya CSS tombol aksi (Edit dan Hapus) serta validasi konfirmasi berbasis event submit pada JavaScript berhasil menciptakan alur interaksi aplikasi yang lebih nyaman dan aman.
 
-# JOBSHEET 10
+# JOBSHEET 10 - Autentikasi dan Manajemen Sesi (SIMPUS-Mini)
+
+## 1. Tujuan Praktikum
+Mahasiswa diharapkan mampu:
+1. Memahami konsep manajemen sesi (*session management*) menggunakan PHP untuk mengontrol hak akses halaman.
+2. Mengimplementasikan sistem autentikasi pengguna meliputi proses *Login* dan *Register* yang terhubung dengan basis data relasional (PostgreSQL).
+3. Menerapkan pengamanan data kredensial menggunakan fungsi *password hashing* (`password_hash` dan `password_verify`).
+4. Merancang antarmuka pengguna (*User Interface*) yang modern, responsif, dan ramah pengguna untuk sistem manajemen perpustakaan.
+---
+
+## 2. Hasil Praktikum
+1. **Antarmuka Login Modern (`/auth/login.php`)**:
+   * Berhasil merancang halaman login berbasis *split-screen* dua kolom yang responsif dan estetis.
+   * Dilengkapi dengan ikon interaktif (*FontAwesome*) pada kolom input username dan password, serta fitur **Show/Hide Password** (ikon mata) berbasis JavaScript untuk melihat atau menyembunyikan sandi.
+   * Sistem penanganan *error* berhasil menampilkan peringatan dinamis jika login gagal.
+   ![tampilan login simpus mini](img/login.png)
+
+2. **Antarmuka Registrasi (`/auth/register.php`)**:
+   * Halaman registrasi dibangun dengan gaya visual yang konsisten dan selaras dengan halaman login.
+   * Kolom input dilengkapi validasi ganda untuk *Password* dan *Konfirmasi Password*, masing-masing juga dilengkapi fitur *Show/Hide Password* independen.
+   ![tampilan register simpus mini](img/register.png)
+
+3. **Manajemen Sesi & Proteksi Rute**:
+   * Penggunaan fungsi `session_status() === PHP_SESSION_NONE` berhasil mencegah munculnya *notice error* akibat pemanggilan sesi ganda.
+   * Sistem *guard* rute berfungsi secara otomatis untuk mengamankan halaman utama (*dashboard/buku*) agar hanya bisa diakses oleh pengguna yang sudah memiliki sesi aktif.
+   ![tampilan login simpus mini](img/login.png)
+
+---
+
+## 3. Penjelasan
+
+* **Manajemen Sesi (*Session Management*)**: PHP menggunakan penyimpanan sisi server untuk melacak status login pengguna. Dengan memeriksa keberadaan sesi (`$_SESSION['user_id']`), aplikasi dapat membatasi hak akses halaman secara ketat. Jika pengguna mencoba mengakses halaman manajemen buku tanpa melakukan login terlebih dahulu, sistem akan secara otomatis mengarahkannya kembali ke halaman autentikasi.
+* **Keamanan Kredensial (*Password Hashing*)**: Data sandi yang diinputkan oleh pengguna pada proses registrasi diamankan menggunakan fungsi enkripsi satu arah (*secure password hashing*) sebelum disimpan ke dalam basis data PostgreSQL, sehingga keamanan akun petugas perpustakaan tetap terjaga.
+* **Antarmuka Pengguna (*UI/UX*)**: Pendekatan desain modern menggunakan tata letak *split-screen* memberikan pengalaman pengguna (*user experience*) yang bersih dan profesional, sangat ideal untuk sistem informasi skala mini seperti manajemen perpustakaan digital.
+
+---
+
+## 3. Kesimpulan
+
+Praktikum Jobsheet 10 berhasil diselesaikan dengan mengimplementasikan sistem autentikasi dan manajemen sesi pada proyek **SIMPUS-Mini**. Integrasi antara antarmuka web modern (*split-screen UI* dengan fitur *show/hide password*), logika backend PHP, dan basis data PostgreSQL berjalan dengan baik.
+Melalui praktikum ini, kita telah mempelajari dan menerapkan konsep dasar *authentication* (autentikasi) serta *authorization* (otorisasi) hak akses. Saat ini, sistem **SIMPUS-Mini** telah memiliki keamanan, di mana pengguna diwajibkan untuk melakukan *login* terlebih dahulu sebelum dapat mengakses dan melakukan operasi CRUD (Create, Read, Update, Delete) pada data perpustakaan.
 

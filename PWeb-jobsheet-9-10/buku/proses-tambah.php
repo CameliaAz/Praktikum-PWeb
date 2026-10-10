@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/../includes/auth.php';
 session_start();
 
 // 1. Menerima data dari form POST dengan null coalescing operator (??) dan trim
